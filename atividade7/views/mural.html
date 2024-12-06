@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mural</title>
+</head>
+<body>
+<h1>Mural de Mensagens</h1>
+<% if (error) { %>
+<p style="color: red;"><%= error %></p>
+<% } %>
+<form action="/mural" method="POST">
+  <label>Título:</label>
+  <label>
+    <input type="text" name="title">
+  </label>
+  <label>Mensagem:</label>
+  <label>
+    <textarea name="content"></textarea>
+  </label>
+  <button type="submit">Enviar</button>
+</form>
+<ul>
+  <% messages.forEach((message) => { %>
+  <li>
+    <a href="/mensagem/<%= message.id %>"><%= message.title %></a> - por <%= message.author %>
+  </li>
+  <% }); %>
+</ul>
+</body>
+</html>
